@@ -159,6 +159,9 @@ arBbars=-[arEval.aGrid[findfirst(arEval.pol.defaultGrid[:,i].==false)] for i in 
 #set linewidth for plots:
 lw=2
 lw45=.5
+ms=3
+msdiamond=5
+default(size=(600,400),xtickfontsize=12,ytickfontsize=12,yguidefontsize=14,xguidefontsize=14)
 
 #to set spacing of markers and other attributes
 @recipe function f(::Type{Val{:samplemarkers}}, x, y, z; step = 10)
@@ -192,22 +195,22 @@ end
 f = plot(linEval.yGrid,linEval.yGrid,line=(lw45, :gray),legend=false, 
 xlabel=(L"$y$"), ylabel=(L"$y^D$"))
 plot!(f,linEval.yGrid,linEval.yDefGrid,line=(lw, :black))
-plot!(quadEval.yGrid,quadEval.yDefGrid,line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(arEval.yGrid,arEval.yDefGrid,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(quadEval.yGrid,quadEval.yDefGrid,line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(arEval.yGrid,arEval.yDefGrid,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 savefig(f, (joinpath(".","Chapter5","output","fig_5_1.pdf" )))
 
 # Figure 5.2: Deadweight Costs of Default
 f = plot(linEval.yGrid,linBbars,line=(lw,:black), xlabel=(L"$y$"),ylabel= (L"$\overline{b}(y)$"), legend=false);
-plot!(f,quadEval.yGrid,quadBbars,line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(f,arEval.yGrid,arBbars,line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,quadEval.yGrid,quadBbars,line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(f,arEval.yGrid,arBbars,line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 savefig(f, (joinpath(".","Chapter5","output","fig_5_2.pdf" )))
 
 
 # Figure 5.3: Price Schedules
 #Figure 5.3(a) Prices at lowest Y
 f=plot(-linEval.aGrid,linEval.qGrid[:,1],line=(lw, :black), xlabel=(L"$b'$"),ylabel=(L"$q(b',y=y_{min})$"),legend=false)
-plot!(f,-quadEval.aGrid,quadEval.qGrid[:,1],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(-arEval.aGrid,arEval.qGrid[:,1],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-quadEval.aGrid,quadEval.qGrid[:,1],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(-arEval.aGrid,arEval.qGrid[:,1],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,xlims=(0, -assetGrid[1]))
 savefig(f, (joinpath(".","Chapter5","output","fig_5_3a.pdf" )))
 
@@ -215,16 +218,16 @@ savefig(f, (joinpath(".","Chapter5","output","fig_5_3a.pdf" )))
 
 #Figure 5.3(b) Prices at mean Y
 f=plot(-linEval.aGrid,linEval.qGrid[:,midY],line=(lw, :black), xlabel=(L"$b'$"),ylabel=(L"$q(b',y=\mu)$"),legend=false)
-plot!(f,-quadEval.aGrid,quadEval.qGrid[:,midY],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(-arEval.aGrid,arEval.qGrid[:,midY],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-quadEval.aGrid,quadEval.qGrid[:,midY],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(-arEval.aGrid,arEval.qGrid[:,midY],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,xlims=(0, -assetGrid[1]))
 savefig(f, (joinpath(".","Chapter5","output","fig_5_3b.pdf" )))
 
 
 #Figure 5.3(c) Prices at highest Y
 f=plot(-linEval.aGrid,linEval.qGrid[:,yN],line=(lw, :black), xlabel=(L"$b'$"),ylabel=(L"$q(b',y=y_{max})$"),legend=false)
-plot!(f,-quadEval.aGrid,quadEval.qGrid[:,yN],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(-arEval.aGrid,arEval.qGrid[:,yN],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-quadEval.aGrid,quadEval.qGrid[:,yN],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(-arEval.aGrid,arEval.qGrid[:,yN],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,xlims=(0, -assetGrid[1]))
 savefig(f, (joinpath(".","Chapter5","output","fig_5_3c.pdf" )))
 
@@ -234,8 +237,8 @@ savefig(f, (joinpath(".","Chapter5","output","fig_5_3c.pdf" )))
 # Figure 5.4 Policy Functions
 # Figure 5.4(a)  Policies at lowest Y
 f=plot(-linEval.aGrid[linBbarsindex[1]:assetN],-linEval.aGrid[linEval.pol.apRGrid[linBbarsindex[1]:assetN,1]],line=(lw, :black),xlabel=(L"$b$"),ylabel=(L"$\mathcal{B}(b,y=y_{min})$"), legend=false)
-plot!(f,-quadEval.aGrid[quadBbarsindex[1]:assetN],-quadEval.aGrid[quadEval.pol.apRGrid[quadBbarsindex[1]:assetN,1]],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(f,-arEval.aGrid[arBbarsindex[1]:assetN],-arEval.aGrid[arEval.pol.apRGrid[arBbarsindex[1]:assetN,1]],line=line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-quadEval.aGrid[quadBbarsindex[1]:assetN],-quadEval.aGrid[quadEval.pol.apRGrid[quadBbarsindex[1]:assetN,1]],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(f,-arEval.aGrid[arBbarsindex[1]:assetN],-arEval.aGrid[arEval.pol.apRGrid[arBbarsindex[1]:assetN,1]],line=line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,-arEval.aGrid,-arEval.aGrid,line=(lw45, :gray))
 plot!(f,xlim=(0, -assetGrid[1]))
 savefig(f, (joinpath(".","Chapter5","output","fig_5_4a.pdf" )))
@@ -243,8 +246,8 @@ savefig(f, (joinpath(".","Chapter5","output","fig_5_4a.pdf" )))
 
 # Figure 5.4(b) Policies at mean Y
 f=plot(-linEval.aGrid[linBbarsindex[midY]:assetN],-linEval.aGrid[linEval.pol.apRGrid[linBbarsindex[midY]:assetN,midY]],line=(lw, :black),xlabel=(L"$b$"),ylabel=(L"$\mathcal{B}(b,y=\mu)$"), legend=false)
-plot!(f,-quadEval.aGrid[quadBbarsindex[midY]:assetN],-quadEval.aGrid[quadEval.pol.apRGrid[quadBbarsindex[midY]:assetN,midY]],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(f,-arEval.aGrid[arBbarsindex[midY]:assetN],-arEval.aGrid[arEval.pol.apRGrid[arBbarsindex[midY]:assetN,midY]],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-quadEval.aGrid[quadBbarsindex[midY]:assetN],-quadEval.aGrid[quadEval.pol.apRGrid[quadBbarsindex[midY]:assetN,midY]],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(f,-arEval.aGrid[arBbarsindex[midY]:assetN],-arEval.aGrid[arEval.pol.apRGrid[arBbarsindex[midY]:assetN,midY]],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,-arEval.aGrid,-arEval.aGrid,line=(lw45, :gray))
 plot!(f,xlim=(0, -assetGrid[1]))
 savefig(f, (joinpath(".","Chapter5","output","fig_5_4b.pdf" )))
@@ -253,8 +256,8 @@ savefig(f, (joinpath(".","Chapter5","output","fig_5_4b.pdf" )))
 
 # Figure 5.4(c) Policies at max Y
 f=plot(-linEval.aGrid[linBbarsindex[yN]:assetN],-linEval.aGrid[linEval.pol.apRGrid[linBbarsindex[yN]:assetN,yN]],line=(lw, :black),xlabel=(L"$b$"),ylabel=(L"$\mathcal{B}(b,y=y_{max})$"), legend=false)
-plot!(f,-quadEval.aGrid[quadBbarsindex[yN]:assetN],-quadEval.aGrid[quadEval.pol.apRGrid[quadBbarsindex[yN]:assetN,yN]],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(f,-arEval.aGrid[arBbarsindex[yN]:assetN],-arEval.aGrid[arEval.pol.apRGrid[arBbarsindex[yN]:assetN,yN]],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-quadEval.aGrid[quadBbarsindex[yN]:assetN],-quadEval.aGrid[quadEval.pol.apRGrid[quadBbarsindex[yN]:assetN,yN]],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(f,-arEval.aGrid[arBbarsindex[yN]:assetN],-arEval.aGrid[arEval.pol.apRGrid[arBbarsindex[yN]:assetN,yN]],line=(lw,:dashdot, :black), st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,-arEval.aGrid,-arEval.aGrid,line=(lw45, :gray))
 plot!(f,xlim=(0, -assetGrid[1]))
 savefig(f, (joinpath(".","Chapter5","output","fig_5_4c.pdf" )))

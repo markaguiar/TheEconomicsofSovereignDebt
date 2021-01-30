@@ -120,27 +120,30 @@ qstar2=(Lambda/2+(1-Lambda/2)*coupon)/(R1-(1-Lambda/2));
 
 #set linewidth for plots:
 lw=2
+ms=3
+msdiamond=5
+default(size=(600,400),xtickfontsize=12,ytickfontsize=12,yguidefontsize=14,xguidefontsize=14)
 
 
 #plot prices at lowest Y
 f=plot(-LTBModel.aGrid,LTBModel.qGrid[:,1]/qstar,line=(lw, :black), legend=false,xlabel=(L"$b'$"),ylabel=(L"$q(b',y=y_{min})/q^{RF}$"))
-plot!(f,-STBModel.aGrid,STBModel.qGrid[:,1]*R1,line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(f,-LTBModel2.aGrid,LTBModel2.qGrid[:,1]/qstar2,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-STBModel.aGrid,STBModel.qGrid[:,1]*R1,line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(f,-LTBModel2.aGrid,LTBModel2.qGrid[:,1]/qstar2,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,xlims=(0, -assetGrid[1]))
 savefig(f, joinpath(".","Chapter7","output","fig_7_6a.pdf"))
 
 
 #plot prices at mean Y
 f=plot(-LTBModel.aGrid,LTBModel.qGrid[:,midY]/qstar,line=(lw, :black), legend=false,xlabel=(L"$b'$"),ylabel=(L"$q(b',y=\mu)/q^{RF}$"))
-plot!(f,-STBModel.aGrid,STBModel.qGrid[:,midY],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(f,-LTBModel2.aGrid,LTBModel2.qGrid[:,midY]/qstar2,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-STBModel.aGrid,STBModel.qGrid[:,midY],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(f,-LTBModel2.aGrid,LTBModel2.qGrid[:,midY]/qstar2,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,xlims=(0, -assetGrid[1]))
 savefig(f, joinpath(".","Chapter7","output","fig_7_6b.pdf"))
 
 #plot prices at highest Y
 f=plot(-LTBModel.aGrid,LTBModel.qGrid[:,yN]/qstar,line=(lw, :black), legend=false,xlabel=(L"$b'$"),ylabel=(L"$q(b',y=y_{max})/q^{RF}$"))
-plot!(f,-STBModel.aGrid,STBModel.qGrid[:,yN],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=2)
-plot!(f,-LTBModel2.aGrid,LTBModel2.qGrid[:,yN]/qstar2,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=2)
+plot!(f,-STBModel.aGrid,STBModel.qGrid[:,yN],line=(lw,:dash, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :circle, markersize=ms)
+plot!(f,-LTBModel2.aGrid,LTBModel2.qGrid[:,yN]/qstar2,line=(lw,:dashdot, :black),st = :samplemarkers, step = 20, markercolor=:black, shape = :diamond, markersize=msdiamond)
 plot!(f,xlims=(0, -assetGrid[1]))
 savefig(f, joinpath(".","Chapter7","output","fig_7_6c.pdf"))
 

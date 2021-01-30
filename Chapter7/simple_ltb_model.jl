@@ -21,6 +21,8 @@ sol = solve_equilibrium(m, bv_tol=_BV_TOL, ode_tol=_ODE_TOL);
 eff = solve_efficient(m, ode_tol=_ODE_TOL);
 
 
+default(size=(600,400),xtickfontsize=12,ytickfontsize=12,yguidefontsize=14,xguidefontsize=14)
+
 @info "Generating Figures"
 
 #plot consumption policy
