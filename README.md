@@ -1,17 +1,38 @@
+
 ## Replication files for <ins>The Economics of Sovereign Debt and Default </ins> 
 ### by Mark Aguiar and Manuel Amador
 
-This repository replicates the computations and figures presented in the manuscript.  The folders labelled by chapter number contain the basic code to construct the respective chapter's output, with calls to the underlying computation programs contained in the SRC folder. 
+### Overview
+This repository replicates the computations and figures presented in the manuscript.  All code is written for Julia. 
 
-We are especially grateful to Stelios Fourakis, who wrote the code for the quantitative models.
+We are especially grateful to Stelios Fourakis, who wrote the original code for the quantitative models.  The code in this repository has been written by the authors based on that original code. 
 
-### Chapter 5
 
-one_period_bond_models.jl computes twelve models and generates all figure and tables in the text.
-It calls two files from the "src" folder:  (i) OnePeriodDebt_Methods.jl, which computes the model, and (ii) OnePeriodDebt_Simulations.jl, which simulates the model
+### Installation
 
-### Chapter 7
+The code is written to be a self-contained "package."  The Project.toml and Manifest.toml files contain information on dependencies and should not be edited or changed.  To install all necessary packages, open a julia prompt at the root of this repository and type:
 
-The continuous time model is solved, and associated Figures 7.3-7.5 produced, by simple_ltb_model.jl, which calls longbonds_cont_time.jl from the "src" folder.  
+    julia> using Pkg 
+    julia> Pkg.activate(".")
+    julia> Pkg.instantiate()
 
-The long-term bond quantitative model has a similar set of files as Chapter 5's one-period bond model.  LT_bond_models.jl is the front end that generates figures and tables, calling from "src" the two files LongTermDebt_Methods.jl and LongTermDebt_Simulations.jl.  Note that names of some immutable element names are common across the programs of Chapters 5 and 7, so each needs to start with a new session.   
+The above will download the packages needed to run the code.  After this step, the files in the "scripts" subfolder can be run.  
+
+### Replicating Figures and Tables
+
+The replication programs are in the "scripts" subfolder:
+  1.  Chapter5.jl contains the code to replicate tables and figures from Chapter 5.  
+  2.  Chapter7.jl contains the code to replicate the tables and figures from Chapter 7 Section 7.9. 
+   
+   These two files utilize plotting_functions.jl, which contain code for formatting figures as they appear in the manuscript.
+      
+  3.  The file Chapter7_simplemodel.jl in the "Ch7_simplemodel" subfolder contains the code to generate figures for Sections 7.6 and 7.7 of Chapter 7.  This file uses longbonds_cont_time.jl.  
+   
+   All figures are saved to the "output" subfolder.
+
+
+### The SRC Folder
+
+The "src" folder contains the code used to compute the quantitative sovereign bond models of Chapters 5 and 7.  It is not necessary to access these files directly.  The relevant types and functions are collected in the LTBonds module, which is imported by the files in the scripts subfolder.
+
+
