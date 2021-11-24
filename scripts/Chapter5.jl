@@ -12,6 +12,7 @@ using PrettyTables
 
 include(joinpath(@__DIR__, "plotting_functions.jl"))
 
+pretty_table_output = :html # change to :text if running from terminal 
 
 penaltyAG06 = DefCosts(pen1 =0.02, pen2 = 0.0, quadratic = true, reentry = 0.0385)
 penaltyCE12 = DefCosts(pen1 = -0.1881927550, pen2 = 0.2455843389, quadratic = true, reentry = 0.0385)
@@ -160,7 +161,7 @@ pretty_table(
         pairs(moments_Ar)
     ],
     row_names = ["Linear", "Quadratic", "Threshold"],
-    backend = Val(:html)
+    backend = Val(pretty_table_output)
 )
 
 
@@ -177,7 +178,7 @@ pretty_table(
         pairs(moments_Ar)
     ],
     row_names = ["Linear", "Quadratic", "Threshold"],
-    backend = Val(:html)
+    backend = Val(pretty_table_output)
 )
 
 
@@ -194,7 +195,7 @@ pretty_table(
         pairs(moments_Ar)
     ],
     row_names = ["Linear", "Quadratic", "Threshold"],
-    backend = Val(:html)
+    backend = Val(pretty_table_output)
 )
 
 

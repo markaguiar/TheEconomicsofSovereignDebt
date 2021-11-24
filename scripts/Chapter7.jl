@@ -11,6 +11,8 @@ using LaTeXStrings
 using Random 
 using PrettyTables
 
+pretty_table_output = :html # change to :text if running from terminal 
+
 include("plotting_functions.jl")
 
 modelLB, modelSB, modelLB2 = map((0.05, 1.0, 0.025)) do λ
@@ -68,7 +70,7 @@ pretty_table(
         pairs(moments_LB),
     ],
     row_names = ["EGLB"],
-    backend = Val(:html)
+    backend = Val(pretty_table_output)
 )
 
 moments_LB, moments_SB, moments_LB2 =map((modelLB, modelSB, modelLB2)) do m
@@ -83,7 +85,7 @@ pretty_table(
         pairs(moments_LB2)
     ],
     row_names = ["SB", "LB", "LB2"],
-    backend = Val(:html)
+    backend = Val(pretty_table_output)
 )
 
 
