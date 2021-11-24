@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# # Chapter 7 Figures and Moments
-
 import Pkg; 
 Pkg.activate(joinpath(@__DIR__, "..")); 
 Pkg.instantiate()
