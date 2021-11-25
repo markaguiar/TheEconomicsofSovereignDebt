@@ -4,7 +4,7 @@
 ### by Mark Aguiar and Manuel Amador
 
 ### Overview
-This repository replicates the computations and figures presented in the book [<ins>The Economics of Soveregin Debt and Default</ins>](https://press.princeton.edu/books/hardcover/9780691176819/the-economics-of-sovereign-debt-and-default). All code is written for [Julia](https://julialang.org/). 
+This repository replicates the computations and figures presented in the book [<ins>The Economics of Sovereign Debt and Default</ins>](https://press.princeton.edu/books/hardcover/9780691176819/the-economics-of-sovereign-debt-and-default). All code is written for [Julia](https://julialang.org/). 
 
 We are especially grateful to Stelios Fourakis, who wrote the original code for the quantitative models. 
 The code in this repository has been written by the authors based on that original code, with help from Ricardo Alves Monteiro. 
@@ -22,7 +22,7 @@ To install all necessary packages, open a julia prompt at the root of this repos
     julia> Pkg.activate(".")
     julia> Pkg.instantiate()
 
-The above will download the packages needed to run the scripts that used LTBonds.  
+The above will download the packages needed to run the scripts that use LTBonds.  
 
 After this step, the files at the root of `scripts` subfolder can be run. 
 
