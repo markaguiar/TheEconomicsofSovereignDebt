@@ -14,7 +14,7 @@ The code in this repository has been written by the authors based on that origin
 
 Most of the code is based on a self-contained package, LTBonds.
 
-The [`Project.toml` and `Manifest.toml`](https://pkgdocs.julialang.org/v1/toml-files/) files contain information on dependencies and should not be edited or changed.  
+The [`Project.toml`](https://pkgdocs.julialang.org/v1/toml-files/) file contains information on dependencies that suffices for replication.  
 
 To install all necessary packages, open a julia prompt at the root of this repository and type:
 
